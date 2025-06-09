@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet-fullscreen@1.0.2/dist/Leaflet.fullscreen.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet-fullscreen@1.0.2/dist/leaflet.fullscreen.css"/>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_e419f1787b6cf8f974b62c6c66a11310 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+
+            <style>html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            </style>
+
+            <style>#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            </style>
+
+            <script>
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            </script>
+
+        
+    <script src="https://cdn.jsdelivr.net/npm/leaflet.fullscreen@3.0.0/Control.FullScreen.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet.fullscreen@3.0.0/Control.FullScreen.css"/>
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_e419f1787b6cf8f974b62c6c66a11310" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_e419f1787b6cf8f974b62c6c66a11310 = L.map(
+                "map_e419f1787b6cf8f974b62c6c66a11310",
+                {
+                    center: [-23.5, -46.5],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 8,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_872f6e6d464199da8e1c34566f2c9a87 = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 19,
+  "maxNativeZoom": 19,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_872f6e6d464199da8e1c34566f2c9a87.addTo(map_e419f1787b6cf8f974b62c6c66a11310);
+        
+    
+            var marker_6bf9733ab55d5fdeb8c2e5067a720b57 = L.marker(
+                [-23.32, -46.23],
+                {
+}
+            ).addTo(map_e419f1787b6cf8f974b62c6c66a11310);
+        
+    
+            var icon_5546ce35cf4f2c227e4e05744778c4a5 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "map-marker",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_cf9d25a4232cff8cc2454ad5b9ccb270 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_8aa00e528d43b494454f7a60fb77ba80 = $(`<div id="html_8aa00e528d43b494454f7a60fb77ba80" style="width: 100.0%; height: 100.0%;">Santa Izabel do Pará</div>`)[0];
+                popup_cf9d25a4232cff8cc2454ad5b9ccb270.setContent(html_8aa00e528d43b494454f7a60fb77ba80);
+            
+        
+
+        marker_6bf9733ab55d5fdeb8c2e5067a720b57.bindPopup(popup_cf9d25a4232cff8cc2454ad5b9ccb270)
+        ;
+
+        
+    
+    
+                marker_6bf9733ab55d5fdeb8c2e5067a720b57.setIcon(icon_5546ce35cf4f2c227e4e05744778c4a5);
+            
+    
+            var marker_d7ca61dfe15cb73ca853be7b713f684a = L.marker(
+                [-23.82, -46.1],
+                {
+}
+            ).addTo(map_e419f1787b6cf8f974b62c6c66a11310);
+        
+    
+            var icon_301ab1e8658b86ad131b56f8da43441b = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "map-marker",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_711f92f6f6ff636c13216fdcaf7058a6 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_ef8433683bf95f80e925174abd99dc3c = $(`<div id="html_ef8433683bf95f80e925174abd99dc3c" style="width: 100.0%; height: 100.0%;">Bertioga</div>`)[0];
+                popup_711f92f6f6ff636c13216fdcaf7058a6.setContent(html_ef8433683bf95f80e925174abd99dc3c);
+            
+        
+
+        marker_d7ca61dfe15cb73ca853be7b713f684a.bindPopup(popup_711f92f6f6ff636c13216fdcaf7058a6)
+        ;
+
+        
+    
+    
+                marker_d7ca61dfe15cb73ca853be7b713f684a.setIcon(icon_301ab1e8658b86ad131b56f8da43441b);
+            
+    
+            var marker_f7f2cd491da92ec3730556bb7f9b8277 = L.marker(
+                [-23.62, -45.42],
+                {
+}
+            ).addTo(map_e419f1787b6cf8f974b62c6c66a11310);
+        
+    
+            var icon_b0ef4d5ecc9697236d867b7af1193fc2 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "map-marker",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_27279b81185b2a4c49c9ec058c49858f = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_cb6389dd1d562a5a8cdc1bdab0ec12da = $(`<div id="html_cb6389dd1d562a5a8cdc1bdab0ec12da" style="width: 100.0%; height: 100.0%;">Caraguatatuba</div>`)[0];
+                popup_27279b81185b2a4c49c9ec058c49858f.setContent(html_cb6389dd1d562a5a8cdc1bdab0ec12da);
+            
+        
+
+        marker_f7f2cd491da92ec3730556bb7f9b8277.bindPopup(popup_27279b81185b2a4c49c9ec058c49858f)
+        ;
+
+        
+    
+    
+                marker_f7f2cd491da92ec3730556bb7f9b8277.setIcon(icon_b0ef4d5ecc9697236d867b7af1193fc2);
+            
+    
+            var marker_ec942323d72eb5966b817afbbfe0fb8b = L.marker(
+                [-23.45, -46.53],
+                {
+}
+            ).addTo(map_e419f1787b6cf8f974b62c6c66a11310);
+        
+    
+            var icon_0569d90c13454a1a16ed17d5083da3dd = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "map-marker",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_18f2a6c80944ecc627cc8cc2f6389380 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_2366618f1e65ec9fb82f8db537c6bb60 = $(`<div id="html_2366618f1e65ec9fb82f8db537c6bb60" style="width: 100.0%; height: 100.0%;">Guarulhos</div>`)[0];
+                popup_18f2a6c80944ecc627cc8cc2f6389380.setContent(html_2366618f1e65ec9fb82f8db537c6bb60);
+            
+        
+
+        marker_ec942323d72eb5966b817afbbfe0fb8b.bindPopup(popup_18f2a6c80944ecc627cc8cc2f6389380)
+        ;
+
+        
+    
+    
+                marker_ec942323d72eb5966b817afbbfe0fb8b.setIcon(icon_0569d90c13454a1a16ed17d5083da3dd);
+            
+    
+            var marker_871d11efbb85b0023e68f46170e44170 = L.marker(
+                [-23.3, -45.97],
+                {
+}
+            ).addTo(map_e419f1787b6cf8f974b62c6c66a11310);
+        
+    
+            var icon_6bb3d84d2e29a6382fafcce16da37711 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "map-marker",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_81dbdcb019df4a47494e43bb8ffc9c8e = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_7777c53f49062e33b58fb88f30e73a51 = $(`<div id="html_7777c53f49062e33b58fb88f30e73a51" style="width: 100.0%; height: 100.0%;">Jacareí</div>`)[0];
+                popup_81dbdcb019df4a47494e43bb8ffc9c8e.setContent(html_7777c53f49062e33b58fb88f30e73a51);
+            
+        
+
+        marker_871d11efbb85b0023e68f46170e44170.bindPopup(popup_81dbdcb019df4a47494e43bb8ffc9c8e)
+        ;
+
+        
+    
+    
+                marker_871d11efbb85b0023e68f46170e44170.setIcon(icon_6bb3d84d2e29a6382fafcce16da37711);
+            
+    
+            var marker_f316ab7b8cec7444755497a05dc751a6 = L.marker(
+                [-23.52, -46.19],
+                {
+}
+            ).addTo(map_e419f1787b6cf8f974b62c6c66a11310);
+        
+    
+            var icon_022c30d87838e4aa33a033294306f220 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "map-marker",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_d763dc9af5ea8beeee058f641eaecfe9 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_8ba8ccaf9f2c894f89c0bd0441c10fbb = $(`<div id="html_8ba8ccaf9f2c894f89c0bd0441c10fbb" style="width: 100.0%; height: 100.0%;">Mogi das Cruzes</div>`)[0];
+                popup_d763dc9af5ea8beeee058f641eaecfe9.setContent(html_8ba8ccaf9f2c894f89c0bd0441c10fbb);
+            
+        
+
+        marker_f316ab7b8cec7444755497a05dc751a6.bindPopup(popup_d763dc9af5ea8beeee058f641eaecfe9)
+        ;
+
+        
+    
+    
+                marker_f316ab7b8cec7444755497a05dc751a6.setIcon(icon_022c30d87838e4aa33a033294306f220);
+            
+    
+            var marker_7fa5e3ee62fd6badba9a0730e3752aac = L.marker(
+                [-23.71, -46.42],
+                {
+}
+            ).addTo(map_e419f1787b6cf8f974b62c6c66a11310);
+        
+    
+            var icon_daa4a084d9be989b767ee1434e790626 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "map-marker",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_0e045adec27a40ea23c8ad13110c9a2e = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_874f02ba1eacaa595d336ad0e1b779ef = $(`<div id="html_874f02ba1eacaa595d336ad0e1b779ef" style="width: 100.0%; height: 100.0%;">Ribeirão Pires</div>`)[0];
+                popup_0e045adec27a40ea23c8ad13110c9a2e.setContent(html_874f02ba1eacaa595d336ad0e1b779ef);
+            
+        
+
+        marker_7fa5e3ee62fd6badba9a0730e3752aac.bindPopup(popup_0e045adec27a40ea23c8ad13110c9a2e)
+        ;
+
+        
+    
+    
+                marker_7fa5e3ee62fd6badba9a0730e3752aac.setIcon(icon_daa4a084d9be989b767ee1434e790626);
+            
+    
+            var marker_031d2964ce5f00e01e01e4bf95b433ac = L.marker(
+                [-23.65, -46.53],
+                {
+}
+            ).addTo(map_e419f1787b6cf8f974b62c6c66a11310);
+        
+    
+            var icon_0ac4a4643b1ebbff236ac66b1d2ed37d = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "map-marker",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_9aaef090a5a89bc73d4b78edefc571d6 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_025530375388e15b853e2f2d63a91642 = $(`<div id="html_025530375388e15b853e2f2d63a91642" style="width: 100.0%; height: 100.0%;">Santo André</div>`)[0];
+                popup_9aaef090a5a89bc73d4b78edefc571d6.setContent(html_025530375388e15b853e2f2d63a91642);
+            
+        
+
+        marker_031d2964ce5f00e01e01e4bf95b433ac.bindPopup(popup_9aaef090a5a89bc73d4b78edefc571d6)
+        ;
+
+        
+    
+    
+                marker_031d2964ce5f00e01e01e4bf95b433ac.setIcon(icon_0ac4a4643b1ebbff236ac66b1d2ed37d);
+            
+    
+            var marker_9c93086c8ea4a69fc328c1d68b7c6f09 = L.marker(
+                [-23.94, -46.34],
+                {
+}
+            ).addTo(map_e419f1787b6cf8f974b62c6c66a11310);
+        
+    
+            var icon_9cc6260b47e36bc1a0177401f5b6cf1c = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "map-marker",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_3e3d32f888f4ee8b7b4f4d7a0f3b4df0 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_f19ee309a23e1b96ddc7304b6695a401 = $(`<div id="html_f19ee309a23e1b96ddc7304b6695a401" style="width: 100.0%; height: 100.0%;">Santos</div>`)[0];
+                popup_3e3d32f888f4ee8b7b4f4d7a0f3b4df0.setContent(html_f19ee309a23e1b96ddc7304b6695a401);
+            
+        
+
+        marker_9c93086c8ea4a69fc328c1d68b7c6f09.bindPopup(popup_3e3d32f888f4ee8b7b4f4d7a0f3b4df0)
+        ;
+
+        
+    
+    
+                marker_9c93086c8ea4a69fc328c1d68b7c6f09.setIcon(icon_9cc6260b47e36bc1a0177401f5b6cf1c);
+            
+    
+            var marker_6131676f85e4a6d51c1aa3c379d02282 = L.marker(
+                [-23.71, -46.55],
+                {
+}
+            ).addTo(map_e419f1787b6cf8f974b62c6c66a11310);
+        
+    
+            var icon_4122d2dad62ac60c2a3bf0054039c76c = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "map-marker",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_57b8cecb7d820ae5e292ece5f2d1f804 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_0b5343698790f47a135b09919ac7ca67 = $(`<div id="html_0b5343698790f47a135b09919ac7ca67" style="width: 100.0%; height: 100.0%;">São Bernardo do Campo</div>`)[0];
+                popup_57b8cecb7d820ae5e292ece5f2d1f804.setContent(html_0b5343698790f47a135b09919ac7ca67);
+            
+        
+
+        marker_6131676f85e4a6d51c1aa3c379d02282.bindPopup(popup_57b8cecb7d820ae5e292ece5f2d1f804)
+        ;
+
+        
+    
+    
+                marker_6131676f85e4a6d51c1aa3c379d02282.setIcon(icon_4122d2dad62ac60c2a3bf0054039c76c);
+            
+    
+            var marker_f7b74b29511a3c3467258a52681d2822 = L.marker(
+                [-23.61, -46.56],
+                {
+}
+            ).addTo(map_e419f1787b6cf8f974b62c6c66a11310);
+        
+    
+            var icon_1f34c3a24e8a983a133c3c5e82dc192f = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "map-marker",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_ba3ffe6bb07eb6c3d71c0ab02fcc6b72 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_9650c1e0ad70a1b7e1cb689acaeb967b = $(`<div id="html_9650c1e0ad70a1b7e1cb689acaeb967b" style="width: 100.0%; height: 100.0%;">São Caetano do Sul</div>`)[0];
+                popup_ba3ffe6bb07eb6c3d71c0ab02fcc6b72.setContent(html_9650c1e0ad70a1b7e1cb689acaeb967b);
+            
+        
+
+        marker_f7b74b29511a3c3467258a52681d2822.bindPopup(popup_ba3ffe6bb07eb6c3d71c0ab02fcc6b72)
+        ;
+
+        
+    
+    
+                marker_f7b74b29511a3c3467258a52681d2822.setIcon(icon_1f34c3a24e8a983a133c3c5e82dc192f);
+            
+    
+            var marker_737c93368e5097a9ebeccbbb61f2fb80 = L.marker(
+                [-23.19, -45.89],
+                {
+}
+            ).addTo(map_e419f1787b6cf8f974b62c6c66a11310);
+        
+    
+            var icon_0d81f50d9bb0f79ee8b3ab6cf7f67e3f = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "map-marker",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_8e5b16e99e2fcf6c2b2563ed0fdc9d50 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_5024395172b41e2d52e6a48d494c09bd = $(`<div id="html_5024395172b41e2d52e6a48d494c09bd" style="width: 100.0%; height: 100.0%;">São José dos Campos</div>`)[0];
+                popup_8e5b16e99e2fcf6c2b2563ed0fdc9d50.setContent(html_5024395172b41e2d52e6a48d494c09bd);
+            
+        
+
+        marker_737c93368e5097a9ebeccbbb61f2fb80.bindPopup(popup_8e5b16e99e2fcf6c2b2563ed0fdc9d50)
+        ;
+
+        
+    
+    
+                marker_737c93368e5097a9ebeccbbb61f2fb80.setIcon(icon_0d81f50d9bb0f79ee8b3ab6cf7f67e3f);
+            
+    
+            var marker_f78741a125240052d0a062f56cbf332a = L.marker(
+                [-23.55, -46.56],
+                {
+}
+            ).addTo(map_e419f1787b6cf8f974b62c6c66a11310);
+        
+    
+            var icon_c3172120876307b17a8557a9a396d274 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "map-marker",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_7fdd453cbf7e516730e51940f388f7dd = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_ed8470e583f230fb3ccccf34d5c8c6bf = $(`<div id="html_ed8470e583f230fb3ccccf34d5c8c6bf" style="width: 100.0%; height: 100.0%;">São Paulo</div>`)[0];
+                popup_7fdd453cbf7e516730e51940f388f7dd.setContent(html_ed8470e583f230fb3ccccf34d5c8c6bf);
+            
+        
+
+        marker_f78741a125240052d0a062f56cbf332a.bindPopup(popup_7fdd453cbf7e516730e51940f388f7dd)
+        ;
+
+        
+    
+    
+                marker_f78741a125240052d0a062f56cbf332a.setIcon(icon_c3172120876307b17a8557a9a396d274);
+            
+    
+            var marker_c78ef3c459096f93ae97af5ef2d98fde = L.marker(
+                [-23.42, -45.08],
+                {
+}
+            ).addTo(map_e419f1787b6cf8f974b62c6c66a11310);
+        
+    
+            var icon_d97c5fbd24779c8fec3c18beb078ef61 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "map-marker",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_4922bb676cb5fa0b69941b655e906d85 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_5c4ddbc8ec2e31974ba605786038c21f = $(`<div id="html_5c4ddbc8ec2e31974ba605786038c21f" style="width: 100.0%; height: 100.0%;">Ubatuba</div>`)[0];
+                popup_4922bb676cb5fa0b69941b655e906d85.setContent(html_5c4ddbc8ec2e31974ba605786038c21f);
+            
+        
+
+        marker_c78ef3c459096f93ae97af5ef2d98fde.bindPopup(popup_4922bb676cb5fa0b69941b655e906d85)
+        ;
+
+        
+    
+    
+                marker_c78ef3c459096f93ae97af5ef2d98fde.setIcon(icon_d97c5fbd24779c8fec3c18beb078ef61);
+            
+    
+            var marker_93193aff80d6e9820cb43b57bcb0abfc = L.marker(
+                [-23.5506507, -46.6333824],
+                {
+}
+            ).addTo(map_e419f1787b6cf8f974b62c6c66a11310);
+        
+    
+            var icon_88c41e34162941b63ee42da22e3f9195 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "map-marker",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_61725df8e8b4b32895e9a0a031c13a73 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_5974af3e4eb66d7f9aa9ddda5033c4d0 = $(`<div id="html_5974af3e4eb66d7f9aa9ddda5033c4d0" style="width: 100.0%; height: 100.0%;">São Paulo)</div>`)[0];
+                popup_61725df8e8b4b32895e9a0a031c13a73.setContent(html_5974af3e4eb66d7f9aa9ddda5033c4d0);
+            
+        
+
+        marker_93193aff80d6e9820cb43b57bcb0abfc.bindPopup(popup_61725df8e8b4b32895e9a0a031c13a73)
+        ;
+
+        
+    
+    
+                marker_93193aff80d6e9820cb43b57bcb0abfc.setIcon(icon_88c41e34162941b63ee42da22e3f9195);
+            
+    
+            L.control.fullscreen(
+                {
+  "position": "topleft",
+  "title": "Full Screen",
+  "titleCancel": "Exit Full Screen",
+  "forceSeparateButton": false,
+}
+            ).addTo(map_e419f1787b6cf8f974b62c6c66a11310);
+        
+</script>
+</html>

@@ -5,13 +5,8 @@ import time
 from folium import plugins
 
 # Dados brutos fornecidos pelo usuário
-# Ler dados do arquivo temporário
-with open("C:\Users\Bruno\Desktop\Scripts\dados_temp.txt", "r", encoding="utf-8") as f:
-    dados_brutos = f.read()
-
-# Dados brutos originais
-"""
-Latitude -23,40 Longitude -46,32 Arujá (+5 km), Atibaia (+20 km), Latitude -23,50 Longitude -46,85 Barueri (+3 km), Bragança Paulista (+20 km), Campinas (+20 km), Latitude -23,47 Longitude -46,53 Guarulhos (+5 km), Latitude -23,82 Longitude -45,37 Ilhabela (+20 km), Indaiatuba (+20 km), Itatiba (+20 km), Itu (+20 km), Jacareí (+20 km), Jundiaí (+20 km), Latitude -23,52 Longitude -46,19 Mogi das Cruzes (+5 km), Latitude -23,53 Longitude -46,79 Osasco (+5 km), Latitude -23,46 Longitude -46,83 Santana de Parnaíba (+3 km), Latitude -23,45 Longitude -46,92 Santana de Parnaíba (+5 km), Santos (+20 km), Latitude -23,71 Longitude -46,55 São Bernardo do Campo (+5 km), Latitude -23,62 Longitude -46,57 São Caetano do Sul (+5 km), São José dos Campos (+20 km), Latitude -23,53 Longitude -46,71 São Paulo (+3 km), Latitude -23,50 Longitude -46,63 São Paulo (+3 km), Latitude -23,45 Longitude -46,60 São Paulo (+3 km), Latitude -23,59 Longitude -46,68 São Paulo (+3 km), Latitude -23,56 Longitude -46,60 São Paulo (+3 km), Latitude -23,57 Longitude -46,73 São Paulo (+3 km), Latitude -23,58 Longitude -46,68 São Paulo (+3 km), Latitude -23,57 Longitude -46,55 São Paulo (+3 km), Latitude -23,56 Longitude -46,69 São Paulo (+3 km), Latitude -23,60 Longitude -46,72 São Paulo (+3 km), Latitude -23,63 Longitude -46,67 São Paulo (+3 km), Latitude -23,62 Longitude -46,69 São Paulo (+3 km), Latitude -23,60 Longitude -46,66 São Paulo (+3 km), Latitude -23,56 Longitude -46,69 São Paulo (+3 km), Latitude -23,56 Longitude -46,56 São Paulo (+3 km), Sorocaba (+20 km), Latitude -23,54 Longitude -46,31 Suzano (+5 km) São Paulo (state)
+dados_brutos = """
+Latitude -23,40 Longitude -46,32 Arujá (+5 km), Atibaia (+20 km), Latitude -23,50 Longitude -46,85 Barueri (+3 km), Campinas (+20 km), Franco da Rocha (+20 km), Latitude -23,47 Longitude -46,53 Guarulhos (+5 km), Latitude -23,82 Longitude -45,37 Ilhabela (+16 km), Indaiatuba (+20 km), Itatiba (+20 km), Itu (+20 km), Jacareí (+20 km), Latitude -23,53 Longitude -46,19 Mogi das Cruzes (+5 km), Latitude -23,46 Longitude -46,83 Santana de Parnaíba (+3 km), Santos (+20 km), São José dos Campos (+20 km), Latitude -23,59 Longitude -46,68 São Paulo (+3 km), Latitude -23,53 Longitude -46,62 São Paulo (+3 km), Latitude -23,57 Longitude -46,55 São Paulo (+3 km), Latitude -23,62 Longitude -46,69 São Paulo (+3 km), Latitude -23,57 Longitude -46,73 São Paulo (+3 km), Latitude -23,63 Longitude -46,73 São Paulo (+3 km), Latitude -23,56 Longitude -46,69 São Paulo (+3 km), Latitude -23,56 Longitude -46,60 São Paulo (+3 km), Latitude -23,60 Longitude -46,66 São Paulo (+3 km), Latitude -23,58 Longitude -46,68 São Paulo (+3 km), Latitude -23,60 Longitude -46,72 São Paulo (+3 km), Latitude -23,53 Longitude -46,71 São Paulo (+3 km), Latitude -23,50 Longitude -46,63 São Paulo (+3 km), Latitude -23,45 Longitude -46,60 São Paulo (+3 km), Latitude -23,56 Longitude -46,56 São Paulo (+3 km), Sorocaba (+20 km), Latitude -23,54 Longitude -46,31 Suzano (+5 km), Ubatuba (+20 km) São Paulo (state)
 """
 
 # Substitui vírgulas decimais por pontos para conversão correta
@@ -91,13 +86,53 @@ for local in locais:
         tooltip=local["nome"]
     ).add_to(mapa)
 
+    # Mantém o raio preciso conforme o valor original, mas com cores diferentes
+    # para melhor visualização
+    
+    # Escolha de cor baseada no tamanho do raio
+    if local["raio_km"] <= 5:
+        cor = 'green'
+        opacidade = 0.15
+    elif local["raio_km"] <= 10:
+        cor = 'blue'
+        opacidade = 0.12
+    elif local["raio_km"] <= 16:
+        cor = 'orange'
+        opacidade = 0.1
+    else:  # 20km
+        cor = 'red'
+        opacidade = 0.08
+    
     folium.Circle(
         location=[local["latitude"], local["longitude"]],
-        radius=local["raio_km"] * 1000,  # km para metros
-        color='blue',
+        radius=local["raio_km"] * 1000,  # km para metros (tamanho preciso)
+        color=cor,
+        weight=2,
         fill=True,
-        fill_opacity=0.2
+        fill_opacity=opacidade,
+        popup=f"Raio: {local['raio_km']} km"
     ).add_to(mapa)
+
+# Adiciona uma legenda sutil ao mapa
+legenda_html = '''
+<div style="position: fixed; 
+            bottom: 20px; right: 20px; 
+            border: 1px solid grey; 
+            z-index: 9999; 
+            background-color: white;
+            padding: 6px;
+            opacity: 0.8;
+            border-radius: 5px;
+            font-size: 12px;">
+    <div style="margin-bottom: 3px;"><b>Legenda - Raios</b></div>
+    <div><span style="color: green; font-size: 16px;">●</span> Até 5 km</div>
+    <div><span style="color: blue; font-size: 16px;">●</span> 6-10 km</div>
+    <div><span style="color: orange; font-size: 16px;">●</span> 11-16 km</div>
+    <div><span style="color: red; font-size: 16px;">●</span> 17-20 km</div>
+</div>
+'''
+
+mapa.get_root().html.add_child(folium.Element(legenda_html))
 
 # Salva o mapa como HTML
 mapa.save("mapa_com_raios.html")
@@ -122,4 +157,3 @@ with open("mapa_com_raios.html", "w", encoding="utf-8") as file:
     file.write(content)
 
 print(f"Mapa gerado com {len(locais)} locais e salvo como 'mapa_com_raios.html'.")
-

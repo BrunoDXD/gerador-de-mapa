@@ -4,18 +4,13 @@ from geopy.geocoders import Nominatim
 import time
 from folium import plugins
 
-# Dados brutos fornecidos
-# Ler dados do arquivo temporário
-with open("C:\Users\Bruno\Desktop\Scripts\dados_temp.txt", "r", encoding="utf-8") as f:
-    raw_data = f.read()
-
-# Dados brutos originais
-"""
-Latitude -23,40 Longitude -46,32 Arujá (+5 km), Atibaia (+20 km), Latitude -23,50 Longitude -46,85 Barueri (+3 km), Bragança Paulista (+20 km), Campinas (+20 km), Latitude -23,47 Longitude -46,53 Guarulhos (+5 km), Latitude -23,82 Longitude -45,37 Ilhabela (+20 km), Indaiatuba (+20 km), Itatiba (+20 km), Itu (+20 km), Jacareí (+20 km), Jundiaí (+20 km), Latitude -23,52 Longitude -46,19 Mogi das Cruzes (+5 km), Latitude -23,53 Longitude -46,79 Osasco (+5 km), Latitude -23,46 Longitude -46,83 Santana de Parnaíba (+3 km), Latitude -23,45 Longitude -46,92 Santana de Parnaíba (+5 km), Santos (+20 km), Latitude -23,71 Longitude -46,55 São Bernardo do Campo (+5 km), Latitude -23,62 Longitude -46,57 São Caetano do Sul (+5 km), São José dos Campos (+20 km), Latitude -23,53 Longitude -46,71 São Paulo (+3 km), Latitude -23,50 Longitude -46,63 São Paulo (+3 km), Latitude -23,45 Longitude -46,60 São Paulo (+3 km), Latitude -23,59 Longitude -46,68 São Paulo (+3 km), Latitude -23,56 Longitude -46,60 São Paulo (+3 km), Latitude -23,57 Longitude -46,73 São Paulo (+3 km), Latitude -23,58 Longitude -46,68 São Paulo (+3 km), Latitude -23,57 Longitude -46,55 São Paulo (+3 km), Latitude -23,56 Longitude -46,69 São Paulo (+3 km), Latitude -23,60 Longitude -46,72 São Paulo (+3 km), Latitude -23,63 Longitude -46,67 São Paulo (+3 km), Latitude -23,62 Longitude -46,69 São Paulo (+3 km), Latitude -23,60 Longitude -46,66 São Paulo (+3 km), Latitude -23,56 Longitude -46,69 São Paulo (+3 km), Latitude -23,56 Longitude -46,56 São Paulo (+3 km), Sorocaba (+20 km), Latitude -23,54 Longitude -46,31 Suzano (+5 km) São Paulo (state)
+# Dados brutos fornecidos pelo usuário
+dados_brutos = """
+Latitude -23,32 Longitude -46,23 Santa Izabel do Pará (+5 km) Pará; Latitude -23,82 Longitude -46,10 Bertioga (+16 km), Latitude -23,62 Longitude -45,42 Caraguatatuba (+20 km), Latitude -23,45 Longitude -46,53 Guarulhos (+5 km), Latitude -23,30 Longitude -45,97 Jacareí (+10 km), Latitude -23,52 Longitude -46,19 Mogi das Cruzes (+10 km), Latitude -23,71 Longitude -46,42 Ribeirão Pires (+5 km), Latitude -23,65 Longitude -46,53 Santo André (+5 km), Latitude -23,94 Longitude -46,34 Santos (+20 km), Latitude -23,71 Longitude -46,55 São Bernardo do Campo (+5 km), Latitude -23,61 Longitude -46,56 São Caetano do Sul (+5 km), Latitude -23,19 Longitude -45,89 São José dos Campos (+10 km), Latitude -23,55 Longitude -46,56 São Paulo (+5 km), Latitude -23,42 Longitude -45,08 Ubatuba (+16 km), Latitude -23,80 Longitude -45,42 São Sebastião (São Paulo) (+20 km) São Paulo (state)
 """
 
 # Substituir vírgulas decimais por pontos
-raw_data = raw_data.replace(',', '.')
+dados_brutos = dados_brutos.replace(',', '.')
 
 # Inicializa o geocodificador
 geolocator = Nominatim(user_agent="mapa_sem_raio")
@@ -30,7 +25,7 @@ pattern_city = r"([^,\(]+)\(\+(\d+)\s*km\)"
 locations = []
 
 # Extrair os dados com coordenadas explícitas
-matches_coords = re.findall(pattern_coords, raw_data)
+matches_coords = re.findall(pattern_coords, dados_brutos)
 
 # Processar locais com coordenadas explícitas
 for lat, lon, nome, raio in matches_coords:
@@ -42,7 +37,7 @@ for lat, lon, nome, raio in matches_coords:
     })
 
 # Extrair cidades sem coordenadas explícitas
-matches_city = re.findall(pattern_city, raw_data)
+matches_city = re.findall(pattern_city, dados_brutos)
 
 # Processar cidades sem coordenadas explícitas
 for nome_cidade, raio in matches_city:
@@ -126,4 +121,3 @@ with open("mapa_com_pinos_personalizados.html", "w", encoding="utf-8") as file:
     file.write(content)
 
 print(f"Mapa com pinos personalizados gerado com {len(locations)} locais e salvo como 'mapa_com_pinos_personalizados.html'.")
-

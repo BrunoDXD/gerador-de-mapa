@@ -1,0 +1,2019 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_acb9d1541570e1d6fa1b3210ec77ec89 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+
+            <style>html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            </style>
+
+            <style>#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            </style>
+
+            <script>
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            </script>
+
+        
+    <script src="https://cdn.jsdelivr.net/npm/leaflet.fullscreen@3.0.0/Control.FullScreen.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet.fullscreen@3.0.0/Control.FullScreen.css"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-locatecontrol/0.66.2/L.Control.Locate.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet-locatecontrol/0.66.2/L.Control.Locate.min.css"/>
+</head>
+<body>
+    
+    
+<div style="position: fixed; 
+            bottom: 20px; right: 20px; 
+            border: 1px solid grey; 
+            z-index: 9999; 
+            background-color: white;
+            padding: 6px;
+            opacity: 0.8;
+            border-radius: 5px;
+            font-size: 12px;">
+    <div style="margin-bottom: 3px;"><b>Legenda - Raios</b></div>
+    <div><span style="color: green; font-size: 16px;">●</span> Até 5 km</div>
+    <div><span style="color: blue; font-size: 16px;">●</span> 6-10 km</div>
+    <div><span style="color: orange; font-size: 16px;">●</span> 11-16 km</div>
+    <div><span style="color: red; font-size: 16px;">●</span> 17-20 km</div>
+</div>
+    
+            <div class="folium-map" id="map_acb9d1541570e1d6fa1b3210ec77ec89" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_acb9d1541570e1d6fa1b3210ec77ec89 = L.map(
+                "map_acb9d1541570e1d6fa1b3210ec77ec89",
+                {
+                    center: [-23.5, -46.6],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 8,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_14e143ea566aaf1516d98ba0734a8140 = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 19,
+  "maxNativeZoom": 19,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_14e143ea566aaf1516d98ba0734a8140.addTo(map_acb9d1541570e1d6fa1b3210ec77ec89);
+        
+    
+            L.control.fullscreen(
+                {
+  "position": "topright",
+  "title": "Tela cheia",
+  "titleCancel": "Sair da tela cheia",
+  "forceSeparateButton": false,
+}
+            ).addTo(map_acb9d1541570e1d6fa1b3210ec77ec89);
+        
+    
+            var locate_control_daafe9ba337041de84a7699dd370bc63 = L.control.locate(
+                {"strings": {"title": "Mostrar minha localiza\u00e7\u00e3o"}}
+            ).addTo(map_acb9d1541570e1d6fa1b3210ec77ec89);
+            
+        
+    
+            var marker_9fd658e7ff36731e05f9702ca5af2be0 = L.marker(
+                [-23.4, -46.32],
+                {
+}
+            ).addTo(map_acb9d1541570e1d6fa1b3210ec77ec89);
+        
+    
+        var popup_5685c9d87dbb17d74e13fb513c1e4470 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_d3ec700e0f630695624565580c7c5549 = $(`<div id="html_d3ec700e0f630695624565580c7c5549" style="width: 100.0%; height: 100.0%;">Arujá (+5 km)</div>`)[0];
+                popup_5685c9d87dbb17d74e13fb513c1e4470.setContent(html_d3ec700e0f630695624565580c7c5549);
+            
+        
+
+        marker_9fd658e7ff36731e05f9702ca5af2be0.bindPopup(popup_5685c9d87dbb17d74e13fb513c1e4470)
+        ;
+
+        
+    
+    
+            marker_9fd658e7ff36731e05f9702ca5af2be0.bindTooltip(
+                `<div>
+                     Arujá
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_b5d48cc14d02d9ccb5ce9c0ad4402108 = L.circle(
+                [-23.4, -46.32],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.15, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5000, "stroke": true, "weight": 2}
+            ).addTo(map_acb9d1541570e1d6fa1b3210ec77ec89);
+        
+    
+        var popup_001ba8a8b1600b1c70941ff83d7949fd = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_4e707cb35be39feaad9ad6019c5dc432 = $(`<div id="html_4e707cb35be39feaad9ad6019c5dc432" style="width: 100.0%; height: 100.0%;">Raio: 5 km</div>`)[0];
+                popup_001ba8a8b1600b1c70941ff83d7949fd.setContent(html_4e707cb35be39feaad9ad6019c5dc432);
+            
+        
+
+        circle_b5d48cc14d02d9ccb5ce9c0ad4402108.bindPopup(popup_001ba8a8b1600b1c70941ff83d7949fd)
+        ;
+
+        
+    
+    
+            var marker_273185441edeeef934b25093acbfdef1 = L.marker(
+                [-23.5, -46.85],
+                {
+}
+            ).addTo(map_acb9d1541570e1d6fa1b3210ec77ec89);
+        
+    
+        var popup_35fd0205ca4eb932484846fbf4e2280a = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_e6ebcfe9b1f6f92354ec7de6fa40fa0a = $(`<div id="html_e6ebcfe9b1f6f92354ec7de6fa40fa0a" style="width: 100.0%; height: 100.0%;">Barueri (+3 km)</div>`)[0];
+                popup_35fd0205ca4eb932484846fbf4e2280a.setContent(html_e6ebcfe9b1f6f92354ec7de6fa40fa0a);
+            
+        
+
+        marker_273185441edeeef934b25093acbfdef1.bindPopup(popup_35fd0205ca4eb932484846fbf4e2280a)
+        ;
+
+        
+    
+    
+            marker_273185441edeeef934b25093acbfdef1.bindTooltip(
+                `<div>
+                     Barueri
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_1e912faa962ea16fd0eea5cf0a3fcf82 = L.circle(
+                [-23.5, -46.85],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.15, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 3000, "stroke": true, "weight": 2}
+            ).addTo(map_acb9d1541570e1d6fa1b3210ec77ec89);
+        
+    
+        var popup_f25d301edd88f7d2c1bedae0307ac588 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_3bb7c2c1c19c9803c58a0a11f6940705 = $(`<div id="html_3bb7c2c1c19c9803c58a0a11f6940705" style="width: 100.0%; height: 100.0%;">Raio: 3 km</div>`)[0];
+                popup_f25d301edd88f7d2c1bedae0307ac588.setContent(html_3bb7c2c1c19c9803c58a0a11f6940705);
+            
+        
+
+        circle_1e912faa962ea16fd0eea5cf0a3fcf82.bindPopup(popup_f25d301edd88f7d2c1bedae0307ac588)
+        ;
+
+        
+    
+    
+            var marker_516a60465ded6efd8f7c5dbb88673745 = L.marker(
+                [-23.47, -46.53],
+                {
+}
+            ).addTo(map_acb9d1541570e1d6fa1b3210ec77ec89);
+        
+    
+        var popup_28d44993f59893dfa59bbd70cf493031 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_2d1390c2f6c46db0695f6203c2896b6d = $(`<div id="html_2d1390c2f6c46db0695f6203c2896b6d" style="width: 100.0%; height: 100.0%;">Guarulhos (+5 km)</div>`)[0];
+                popup_28d44993f59893dfa59bbd70cf493031.setContent(html_2d1390c2f6c46db0695f6203c2896b6d);
+            
+        
+
+        marker_516a60465ded6efd8f7c5dbb88673745.bindPopup(popup_28d44993f59893dfa59bbd70cf493031)
+        ;
+
+        
+    
+    
+            marker_516a60465ded6efd8f7c5dbb88673745.bindTooltip(
+                `<div>
+                     Guarulhos
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_e484f830b8ddaa929cbb19535af706b1 = L.circle(
+                [-23.47, -46.53],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.15, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5000, "stroke": true, "weight": 2}
+            ).addTo(map_acb9d1541570e1d6fa1b3210ec77ec89);
+        
+    
+        var popup_f7264522e24a7beb75630651d5bbdb6b = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_f3a207e8206e017b44276361aa754a46 = $(`<div id="html_f3a207e8206e017b44276361aa754a46" style="width: 100.0%; height: 100.0%;">Raio: 5 km</div>`)[0];
+                popup_f7264522e24a7beb75630651d5bbdb6b.setContent(html_f3a207e8206e017b44276361aa754a46);
+            
+        
+
+        circle_e484f830b8ddaa929cbb19535af706b1.bindPopup(popup_f7264522e24a7beb75630651d5bbdb6b)
+        ;
+
+        
+    
+    
+            var marker_e31fed394aee8b956b0b97d5b0fcc9c7 = L.marker(
+                [-23.82, -45.37],
+                {
+}
+            ).addTo(map_acb9d1541570e1d6fa1b3210ec77ec89);
+        
+    
+        var popup_0b93fa62bf49104be3286067d1ebe05f = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_dfc70ee94780cc3fc8509cad47209755 = $(`<div id="html_dfc70ee94780cc3fc8509cad47209755" style="width: 100.0%; height: 100.0%;">Ilhabela (+16 km)</div>`)[0];
+                popup_0b93fa62bf49104be3286067d1ebe05f.setContent(html_dfc70ee94780cc3fc8509cad47209755);
+            
+        
+
+        marker_e31fed394aee8b956b0b97d5b0fcc9c7.bindPopup(popup_0b93fa62bf49104be3286067d1ebe05f)
+        ;
+
+        
+    
+    
+            marker_e31fed394aee8b956b0b97d5b0fcc9c7.bindTooltip(
+                `<div>
+                     Ilhabela
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_804b0da153757a333befc5e9f941fd5c = L.circle(
+                [-23.82, -45.37],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 16000, "stroke": true, "weight": 2}
+            ).addTo(map_acb9d1541570e1d6fa1b3210ec77ec89);
+        
+    
+        var popup_3447a2ff26adb1e70c9cfff669dae22e = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_79d1b623b953ba193fe2db2d267f8d2a = $(`<div id="html_79d1b623b953ba193fe2db2d267f8d2a" style="width: 100.0%; height: 100.0%;">Raio: 16 km</div>`)[0];
+                popup_3447a2ff26adb1e70c9cfff669dae22e.setContent(html_79d1b623b953ba193fe2db2d267f8d2a);
+            
+        
+
+        circle_804b0da153757a333befc5e9f941fd5c.bindPopup(popup_3447a2ff26adb1e70c9cfff669dae22e)
+        ;
+
+        
+    
+    
+            var marker_e5f380e2f96210867241311f0e551ee1 = L.marker(
+                [-23.53, -46.19],
+                {
+}
+            ).addTo(map_acb9d1541570e1d6fa1b3210ec77ec89);
+        
+    
+        var popup_5ac460f3f98ee75ab7e039524e9d2e7f = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_bc6ee2468c751f6caec365723b90031f = $(`<div id="html_bc6ee2468c751f6caec365723b90031f" style="width: 100.0%; height: 100.0%;">Mogi das Cruzes (+5 km)</div>`)[0];
+                popup_5ac460f3f98ee75ab7e039524e9d2e7f.setContent(html_bc6ee2468c751f6caec365723b90031f);
+            
+        
+
+        marker_e5f380e2f96210867241311f0e551ee1.bindPopup(popup_5ac460f3f98ee75ab7e039524e9d2e7f)
+        ;
+
+        
+    
+    
+            marker_e5f380e2f96210867241311f0e551ee1.bindTooltip(
+                `<div>
+                     Mogi das Cruzes
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_49ed2a9c889cd85a4fa7bb5d8099afa1 = L.circle(
+                [-23.53, -46.19],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.15, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5000, "stroke": true, "weight": 2}
+            ).addTo(map_acb9d1541570e1d6fa1b3210ec77ec89);
+        
+    
+        var popup_bf2e614dfe58378485bc209652e57c72 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_2807cdfd7629a25a2c5d4cb46047969a = $(`<div id="html_2807cdfd7629a25a2c5d4cb46047969a" style="width: 100.0%; height: 100.0%;">Raio: 5 km</div>`)[0];
+                popup_bf2e614dfe58378485bc209652e57c72.setContent(html_2807cdfd7629a25a2c5d4cb46047969a);
+            
+        
+
+        circle_49ed2a9c889cd85a4fa7bb5d8099afa1.bindPopup(popup_bf2e614dfe58378485bc209652e57c72)
+        ;
+
+        
+    
+    
+            var marker_e195a0626f25048f3418f3d815067ab2 = L.marker(
+                [-23.46, -46.83],
+                {
+}
+            ).addTo(map_acb9d1541570e1d6fa1b3210ec77ec89);
+        
+    
+        var popup_c729a99a6cb317eef6a44bd4a0eaccc8 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_041a3379f808379377795ffa4e6ecc74 = $(`<div id="html_041a3379f808379377795ffa4e6ecc74" style="width: 100.0%; height: 100.0%;">Santana de Parnaíba (+3 km)</div>`)[0];
+                popup_c729a99a6cb317eef6a44bd4a0eaccc8.setContent(html_041a3379f808379377795ffa4e6ecc74);
+            
+        
+
+        marker_e195a0626f25048f3418f3d815067ab2.bindPopup(popup_c729a99a6cb317eef6a44bd4a0eaccc8)
+        ;
+
+        
+    
+    
+            marker_e195a0626f25048f3418f3d815067ab2.bindTooltip(
+                `<div>
+                     Santana de Parnaíba
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_b6b9198e58888c5a35c3ab3b21b73dcb = L.circle(
+                [-23.46, -46.83],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.15, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 3000, "stroke": true, "weight": 2}
+            ).addTo(map_acb9d1541570e1d6fa1b3210ec77ec89);
+        
+    
+        var popup_ac780abb80157e7f033b0ad30caa6c4c = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_c8b6b41b6a0da0cd1547f811571e29c2 = $(`<div id="html_c8b6b41b6a0da0cd1547f811571e29c2" style="width: 100.0%; height: 100.0%;">Raio: 3 km</div>`)[0];
+                popup_ac780abb80157e7f033b0ad30caa6c4c.setContent(html_c8b6b41b6a0da0cd1547f811571e29c2);
+            
+        
+
+        circle_b6b9198e58888c5a35c3ab3b21b73dcb.bindPopup(popup_ac780abb80157e7f033b0ad30caa6c4c)
+        ;
+
+        
+    
+    
+            var marker_a11fd92b1033e067ced2f00223fb617e = L.marker(
+                [-23.59, -46.68],
+                {
+}
+            ).addTo(map_acb9d1541570e1d6fa1b3210ec77ec89);
+        
+    
+        var popup_b1d670677a29d91dc4c2d5076ca662c9 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_42acdc5abcb7092b5161c20fd6146b8b = $(`<div id="html_42acdc5abcb7092b5161c20fd6146b8b" style="width: 100.0%; height: 100.0%;">São Paulo (+3 km)</div>`)[0];
+                popup_b1d670677a29d91dc4c2d5076ca662c9.setContent(html_42acdc5abcb7092b5161c20fd6146b8b);
+            
+        
+
+        marker_a11fd92b1033e067ced2f00223fb617e.bindPopup(popup_b1d670677a29d91dc4c2d5076ca662c9)
+        ;
+
+        
+    
+    
+            marker_a11fd92b1033e067ced2f00223fb617e.bindTooltip(
+                `<div>
+                     São Paulo
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_9213c64e6e6e3eca5122996c2f941bb8 = L.circle(
+                [-23.59, -46.68],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.15, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 3000, "stroke": true, "weight": 2}
+            ).addTo(map_acb9d1541570e1d6fa1b3210ec77ec89);
+        
+    
+        var popup_61c79cd9dd0205115d2fc50aed803904 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_c5b6cb64f10845c6c40d64a8a13bdb53 = $(`<div id="html_c5b6cb64f10845c6c40d64a8a13bdb53" style="width: 100.0%; height: 100.0%;">Raio: 3 km</div>`)[0];
+                popup_61c79cd9dd0205115d2fc50aed803904.setContent(html_c5b6cb64f10845c6c40d64a8a13bdb53);
+            
+        
+
+        circle_9213c64e6e6e3eca5122996c2f941bb8.bindPopup(popup_61c79cd9dd0205115d2fc50aed803904)
+        ;
+
+        
+    
+    
+            var marker_ca9cd377feceac40350c3191caf5b7fa = L.marker(
+                [-23.53, -46.62],
+                {
+}
+            ).addTo(map_acb9d1541570e1d6fa1b3210ec77ec89);
+        
+    
+        var popup_48ff5fcc338073dd33b7c6e4d84556b4 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_a1bf3244f0e1ba0764367c717c5818ba = $(`<div id="html_a1bf3244f0e1ba0764367c717c5818ba" style="width: 100.0%; height: 100.0%;">São Paulo (+3 km)</div>`)[0];
+                popup_48ff5fcc338073dd33b7c6e4d84556b4.setContent(html_a1bf3244f0e1ba0764367c717c5818ba);
+            
+        
+
+        marker_ca9cd377feceac40350c3191caf5b7fa.bindPopup(popup_48ff5fcc338073dd33b7c6e4d84556b4)
+        ;
+
+        
+    
+    
+            marker_ca9cd377feceac40350c3191caf5b7fa.bindTooltip(
+                `<div>
+                     São Paulo
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_535ab59ce40b6155418472dedd529898 = L.circle(
+                [-23.53, -46.62],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.15, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 3000, "stroke": true, "weight": 2}
+            ).addTo(map_acb9d1541570e1d6fa1b3210ec77ec89);
+        
+    
+        var popup_ae2cd33348c46f23ef535c865adc5d65 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_71388e06e01d1963566e06f28624e8c0 = $(`<div id="html_71388e06e01d1963566e06f28624e8c0" style="width: 100.0%; height: 100.0%;">Raio: 3 km</div>`)[0];
+                popup_ae2cd33348c46f23ef535c865adc5d65.setContent(html_71388e06e01d1963566e06f28624e8c0);
+            
+        
+
+        circle_535ab59ce40b6155418472dedd529898.bindPopup(popup_ae2cd33348c46f23ef535c865adc5d65)
+        ;
+
+        
+    
+    
+            var marker_8135882d2e36816515255c941087f965 = L.marker(
+                [-23.57, -46.55],
+                {
+}
+            ).addTo(map_acb9d1541570e1d6fa1b3210ec77ec89);
+        
+    
+        var popup_d27dcf8220157ca3de4d643a4132a9de = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_a1da021a9cabb7dc67195954d43924d8 = $(`<div id="html_a1da021a9cabb7dc67195954d43924d8" style="width: 100.0%; height: 100.0%;">São Paulo (+3 km)</div>`)[0];
+                popup_d27dcf8220157ca3de4d643a4132a9de.setContent(html_a1da021a9cabb7dc67195954d43924d8);
+            
+        
+
+        marker_8135882d2e36816515255c941087f965.bindPopup(popup_d27dcf8220157ca3de4d643a4132a9de)
+        ;
+
+        
+    
+    
+            marker_8135882d2e36816515255c941087f965.bindTooltip(
+                `<div>
+                     São Paulo
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_4e924540163c9197c01ba2867f895962 = L.circle(
+                [-23.57, -46.55],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.15, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 3000, "stroke": true, "weight": 2}
+            ).addTo(map_acb9d1541570e1d6fa1b3210ec77ec89);
+        
+    
+        var popup_52ff411e79ecf40ddfbe5f5a04bcbf95 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_4ace531bc392555969fbb8c49be1d670 = $(`<div id="html_4ace531bc392555969fbb8c49be1d670" style="width: 100.0%; height: 100.0%;">Raio: 3 km</div>`)[0];
+                popup_52ff411e79ecf40ddfbe5f5a04bcbf95.setContent(html_4ace531bc392555969fbb8c49be1d670);
+            
+        
+
+        circle_4e924540163c9197c01ba2867f895962.bindPopup(popup_52ff411e79ecf40ddfbe5f5a04bcbf95)
+        ;
+
+        
+    
+    
+            var marker_3aa8d8dfc6072eb86dd27f5c342dac17 = L.marker(
+                [-23.62, -46.69],
+                {
+}
+            ).addTo(map_acb9d1541570e1d6fa1b3210ec77ec89);
+        
+    
+        var popup_808d3e2f409cdd4b431fac66d269f9d4 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_f02bf1b89b3c2d92f0a685ed9e3c3930 = $(`<div id="html_f02bf1b89b3c2d92f0a685ed9e3c3930" style="width: 100.0%; height: 100.0%;">São Paulo (+3 km)</div>`)[0];
+                popup_808d3e2f409cdd4b431fac66d269f9d4.setContent(html_f02bf1b89b3c2d92f0a685ed9e3c3930);
+            
+        
+
+        marker_3aa8d8dfc6072eb86dd27f5c342dac17.bindPopup(popup_808d3e2f409cdd4b431fac66d269f9d4)
+        ;
+
+        
+    
+    
+            marker_3aa8d8dfc6072eb86dd27f5c342dac17.bindTooltip(
+                `<div>
+                     São Paulo
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_03949042bdeda784bc5278ec65b7dd99 = L.circle(
+                [-23.62, -46.69],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.15, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 3000, "stroke": true, "weight": 2}
+            ).addTo(map_acb9d1541570e1d6fa1b3210ec77ec89);
+        
+    
+        var popup_04362e7fa9a84c2d881b4b2a8f7a08ed = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_2d6935f009aee38d86ca860d0a932731 = $(`<div id="html_2d6935f009aee38d86ca860d0a932731" style="width: 100.0%; height: 100.0%;">Raio: 3 km</div>`)[0];
+                popup_04362e7fa9a84c2d881b4b2a8f7a08ed.setContent(html_2d6935f009aee38d86ca860d0a932731);
+            
+        
+
+        circle_03949042bdeda784bc5278ec65b7dd99.bindPopup(popup_04362e7fa9a84c2d881b4b2a8f7a08ed)
+        ;
+
+        
+    
+    
+            var marker_83351b031a1e0d68239225182156220d = L.marker(
+                [-23.57, -46.73],
+                {
+}
+            ).addTo(map_acb9d1541570e1d6fa1b3210ec77ec89);
+        
+    
+        var popup_a0e464df31d28320e1552189d9998bb2 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_3d4c0714d13e64fd0c1263e12345b180 = $(`<div id="html_3d4c0714d13e64fd0c1263e12345b180" style="width: 100.0%; height: 100.0%;">São Paulo (+3 km)</div>`)[0];
+                popup_a0e464df31d28320e1552189d9998bb2.setContent(html_3d4c0714d13e64fd0c1263e12345b180);
+            
+        
+
+        marker_83351b031a1e0d68239225182156220d.bindPopup(popup_a0e464df31d28320e1552189d9998bb2)
+        ;
+
+        
+    
+    
+            marker_83351b031a1e0d68239225182156220d.bindTooltip(
+                `<div>
+                     São Paulo
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_2ea578263dbdb436e2caa660e1d61bbe = L.circle(
+                [-23.57, -46.73],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.15, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 3000, "stroke": true, "weight": 2}
+            ).addTo(map_acb9d1541570e1d6fa1b3210ec77ec89);
+        
+    
+        var popup_525e36db47c3c1b30a390f73b706a929 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_c09c293487bd1972ba1bf9de875c879e = $(`<div id="html_c09c293487bd1972ba1bf9de875c879e" style="width: 100.0%; height: 100.0%;">Raio: 3 km</div>`)[0];
+                popup_525e36db47c3c1b30a390f73b706a929.setContent(html_c09c293487bd1972ba1bf9de875c879e);
+            
+        
+
+        circle_2ea578263dbdb436e2caa660e1d61bbe.bindPopup(popup_525e36db47c3c1b30a390f73b706a929)
+        ;
+
+        
+    
+    
+            var marker_94d6b0eaf5c9fd8fec00bbacb943ccb6 = L.marker(
+                [-23.63, -46.73],
+                {
+}
+            ).addTo(map_acb9d1541570e1d6fa1b3210ec77ec89);
+        
+    
+        var popup_68ba40facd04b26f5bca15a18da72db3 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_ed2fa9d98731e45e021b089550dca428 = $(`<div id="html_ed2fa9d98731e45e021b089550dca428" style="width: 100.0%; height: 100.0%;">São Paulo (+3 km)</div>`)[0];
+                popup_68ba40facd04b26f5bca15a18da72db3.setContent(html_ed2fa9d98731e45e021b089550dca428);
+            
+        
+
+        marker_94d6b0eaf5c9fd8fec00bbacb943ccb6.bindPopup(popup_68ba40facd04b26f5bca15a18da72db3)
+        ;
+
+        
+    
+    
+            marker_94d6b0eaf5c9fd8fec00bbacb943ccb6.bindTooltip(
+                `<div>
+                     São Paulo
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_366f660ab10f67230c1a685d530cf2f6 = L.circle(
+                [-23.63, -46.73],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.15, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 3000, "stroke": true, "weight": 2}
+            ).addTo(map_acb9d1541570e1d6fa1b3210ec77ec89);
+        
+    
+        var popup_0a1182b1d17befea08aa9dcc331e1335 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_20743423fc5aaae38db366da16f93dcb = $(`<div id="html_20743423fc5aaae38db366da16f93dcb" style="width: 100.0%; height: 100.0%;">Raio: 3 km</div>`)[0];
+                popup_0a1182b1d17befea08aa9dcc331e1335.setContent(html_20743423fc5aaae38db366da16f93dcb);
+            
+        
+
+        circle_366f660ab10f67230c1a685d530cf2f6.bindPopup(popup_0a1182b1d17befea08aa9dcc331e1335)
+        ;
+
+        
+    
+    
+            var marker_48b6d580aeb1b96a2a0e18ac02658e46 = L.marker(
+                [-23.56, -46.69],
+                {
+}
+            ).addTo(map_acb9d1541570e1d6fa1b3210ec77ec89);
+        
+    
+        var popup_70552cd80f7be3d197f135ce3d53dc14 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_d7978b33aa70a729b33073937299374a = $(`<div id="html_d7978b33aa70a729b33073937299374a" style="width: 100.0%; height: 100.0%;">São Paulo (+3 km)</div>`)[0];
+                popup_70552cd80f7be3d197f135ce3d53dc14.setContent(html_d7978b33aa70a729b33073937299374a);
+            
+        
+
+        marker_48b6d580aeb1b96a2a0e18ac02658e46.bindPopup(popup_70552cd80f7be3d197f135ce3d53dc14)
+        ;
+
+        
+    
+    
+            marker_48b6d580aeb1b96a2a0e18ac02658e46.bindTooltip(
+                `<div>
+                     São Paulo
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_f0badb76ee1a3625dace2cf558d1bdc2 = L.circle(
+                [-23.56, -46.69],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.15, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 3000, "stroke": true, "weight": 2}
+            ).addTo(map_acb9d1541570e1d6fa1b3210ec77ec89);
+        
+    
+        var popup_bbaa7c8360fb1f4ce5cf02652d0175c4 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_795abc5f26e06aa9a05a4a478193ffb3 = $(`<div id="html_795abc5f26e06aa9a05a4a478193ffb3" style="width: 100.0%; height: 100.0%;">Raio: 3 km</div>`)[0];
+                popup_bbaa7c8360fb1f4ce5cf02652d0175c4.setContent(html_795abc5f26e06aa9a05a4a478193ffb3);
+            
+        
+
+        circle_f0badb76ee1a3625dace2cf558d1bdc2.bindPopup(popup_bbaa7c8360fb1f4ce5cf02652d0175c4)
+        ;
+
+        
+    
+    
+            var marker_c8741857acbab77a0416d421a1d64118 = L.marker(
+                [-23.56, -46.6],
+                {
+}
+            ).addTo(map_acb9d1541570e1d6fa1b3210ec77ec89);
+        
+    
+        var popup_45a1705164992ce84605fd1df9a9a13b = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_a76102021d7c61a3ad88d9b3aa4e98ea = $(`<div id="html_a76102021d7c61a3ad88d9b3aa4e98ea" style="width: 100.0%; height: 100.0%;">São Paulo (+3 km)</div>`)[0];
+                popup_45a1705164992ce84605fd1df9a9a13b.setContent(html_a76102021d7c61a3ad88d9b3aa4e98ea);
+            
+        
+
+        marker_c8741857acbab77a0416d421a1d64118.bindPopup(popup_45a1705164992ce84605fd1df9a9a13b)
+        ;
+
+        
+    
+    
+            marker_c8741857acbab77a0416d421a1d64118.bindTooltip(
+                `<div>
+                     São Paulo
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_83f329edbb87522d74574346079a74ae = L.circle(
+                [-23.56, -46.6],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.15, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 3000, "stroke": true, "weight": 2}
+            ).addTo(map_acb9d1541570e1d6fa1b3210ec77ec89);
+        
+    
+        var popup_79bc820b558ba1c0b3a9b3571c398fa3 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_d26102a7b6b37be22a1d535123f76109 = $(`<div id="html_d26102a7b6b37be22a1d535123f76109" style="width: 100.0%; height: 100.0%;">Raio: 3 km</div>`)[0];
+                popup_79bc820b558ba1c0b3a9b3571c398fa3.setContent(html_d26102a7b6b37be22a1d535123f76109);
+            
+        
+
+        circle_83f329edbb87522d74574346079a74ae.bindPopup(popup_79bc820b558ba1c0b3a9b3571c398fa3)
+        ;
+
+        
+    
+    
+            var marker_ba0630d8c74539cb785df955b4fdd396 = L.marker(
+                [-23.6, -46.66],
+                {
+}
+            ).addTo(map_acb9d1541570e1d6fa1b3210ec77ec89);
+        
+    
+        var popup_dddf26686860df0f36fe56033db5b653 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_ecd36d7f11f142cb41a85f7335d38c5e = $(`<div id="html_ecd36d7f11f142cb41a85f7335d38c5e" style="width: 100.0%; height: 100.0%;">São Paulo (+3 km)</div>`)[0];
+                popup_dddf26686860df0f36fe56033db5b653.setContent(html_ecd36d7f11f142cb41a85f7335d38c5e);
+            
+        
+
+        marker_ba0630d8c74539cb785df955b4fdd396.bindPopup(popup_dddf26686860df0f36fe56033db5b653)
+        ;
+
+        
+    
+    
+            marker_ba0630d8c74539cb785df955b4fdd396.bindTooltip(
+                `<div>
+                     São Paulo
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_eb4c7e3cfb8c066cae7ca79536ef04b4 = L.circle(
+                [-23.6, -46.66],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.15, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 3000, "stroke": true, "weight": 2}
+            ).addTo(map_acb9d1541570e1d6fa1b3210ec77ec89);
+        
+    
+        var popup_9de2c18ce0dafe0ccf1655b56c1af7c6 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_724eb91b46db2cc306016b5243d84637 = $(`<div id="html_724eb91b46db2cc306016b5243d84637" style="width: 100.0%; height: 100.0%;">Raio: 3 km</div>`)[0];
+                popup_9de2c18ce0dafe0ccf1655b56c1af7c6.setContent(html_724eb91b46db2cc306016b5243d84637);
+            
+        
+
+        circle_eb4c7e3cfb8c066cae7ca79536ef04b4.bindPopup(popup_9de2c18ce0dafe0ccf1655b56c1af7c6)
+        ;
+
+        
+    
+    
+            var marker_1fc97289173e5e34debd46d8c47e7847 = L.marker(
+                [-23.58, -46.68],
+                {
+}
+            ).addTo(map_acb9d1541570e1d6fa1b3210ec77ec89);
+        
+    
+        var popup_85860c061dcd5017844357944685c68b = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_ca63141d060c877da3fce233bc7bce9e = $(`<div id="html_ca63141d060c877da3fce233bc7bce9e" style="width: 100.0%; height: 100.0%;">São Paulo (+3 km)</div>`)[0];
+                popup_85860c061dcd5017844357944685c68b.setContent(html_ca63141d060c877da3fce233bc7bce9e);
+            
+        
+
+        marker_1fc97289173e5e34debd46d8c47e7847.bindPopup(popup_85860c061dcd5017844357944685c68b)
+        ;
+
+        
+    
+    
+            marker_1fc97289173e5e34debd46d8c47e7847.bindTooltip(
+                `<div>
+                     São Paulo
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_47e09b91a13214e3d0c3b0287ec80528 = L.circle(
+                [-23.58, -46.68],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.15, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 3000, "stroke": true, "weight": 2}
+            ).addTo(map_acb9d1541570e1d6fa1b3210ec77ec89);
+        
+    
+        var popup_0c23c587b611737308bfa5d73d88e968 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_b6db6b335cda26bf0d0a36c79c81a9b2 = $(`<div id="html_b6db6b335cda26bf0d0a36c79c81a9b2" style="width: 100.0%; height: 100.0%;">Raio: 3 km</div>`)[0];
+                popup_0c23c587b611737308bfa5d73d88e968.setContent(html_b6db6b335cda26bf0d0a36c79c81a9b2);
+            
+        
+
+        circle_47e09b91a13214e3d0c3b0287ec80528.bindPopup(popup_0c23c587b611737308bfa5d73d88e968)
+        ;
+
+        
+    
+    
+            var marker_f2cbaa95e7a8cdb9541266b33506b5b0 = L.marker(
+                [-23.6, -46.72],
+                {
+}
+            ).addTo(map_acb9d1541570e1d6fa1b3210ec77ec89);
+        
+    
+        var popup_e7d9329b3483198c57ed0724fad12b4a = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_5c23bc04fcaa92d3751245fa31db67cd = $(`<div id="html_5c23bc04fcaa92d3751245fa31db67cd" style="width: 100.0%; height: 100.0%;">São Paulo (+3 km)</div>`)[0];
+                popup_e7d9329b3483198c57ed0724fad12b4a.setContent(html_5c23bc04fcaa92d3751245fa31db67cd);
+            
+        
+
+        marker_f2cbaa95e7a8cdb9541266b33506b5b0.bindPopup(popup_e7d9329b3483198c57ed0724fad12b4a)
+        ;
+
+        
+    
+    
+            marker_f2cbaa95e7a8cdb9541266b33506b5b0.bindTooltip(
+                `<div>
+                     São Paulo
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_959d61bb8034f0b2a89168b38f1a9e59 = L.circle(
+                [-23.6, -46.72],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.15, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 3000, "stroke": true, "weight": 2}
+            ).addTo(map_acb9d1541570e1d6fa1b3210ec77ec89);
+        
+    
+        var popup_c280237fbbd61a260d7c233e651c81fc = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_3172accee351f81f614e008281c8eb56 = $(`<div id="html_3172accee351f81f614e008281c8eb56" style="width: 100.0%; height: 100.0%;">Raio: 3 km</div>`)[0];
+                popup_c280237fbbd61a260d7c233e651c81fc.setContent(html_3172accee351f81f614e008281c8eb56);
+            
+        
+
+        circle_959d61bb8034f0b2a89168b38f1a9e59.bindPopup(popup_c280237fbbd61a260d7c233e651c81fc)
+        ;
+
+        
+    
+    
+            var marker_c322624e033283cc16563e0a35a54081 = L.marker(
+                [-23.53, -46.71],
+                {
+}
+            ).addTo(map_acb9d1541570e1d6fa1b3210ec77ec89);
+        
+    
+        var popup_8e7b630939c048ae2dd0761ceaa870e8 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_3a43513f193e246e440c8ea4d6c4a329 = $(`<div id="html_3a43513f193e246e440c8ea4d6c4a329" style="width: 100.0%; height: 100.0%;">São Paulo (+3 km)</div>`)[0];
+                popup_8e7b630939c048ae2dd0761ceaa870e8.setContent(html_3a43513f193e246e440c8ea4d6c4a329);
+            
+        
+
+        marker_c322624e033283cc16563e0a35a54081.bindPopup(popup_8e7b630939c048ae2dd0761ceaa870e8)
+        ;
+
+        
+    
+    
+            marker_c322624e033283cc16563e0a35a54081.bindTooltip(
+                `<div>
+                     São Paulo
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_103229af1c88dc50b2019acb28b353ad = L.circle(
+                [-23.53, -46.71],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.15, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 3000, "stroke": true, "weight": 2}
+            ).addTo(map_acb9d1541570e1d6fa1b3210ec77ec89);
+        
+    
+        var popup_49a133cdccf6b0cda5ad76065d649065 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_5df4b590c04323fe536e511966cd0f42 = $(`<div id="html_5df4b590c04323fe536e511966cd0f42" style="width: 100.0%; height: 100.0%;">Raio: 3 km</div>`)[0];
+                popup_49a133cdccf6b0cda5ad76065d649065.setContent(html_5df4b590c04323fe536e511966cd0f42);
+            
+        
+
+        circle_103229af1c88dc50b2019acb28b353ad.bindPopup(popup_49a133cdccf6b0cda5ad76065d649065)
+        ;
+
+        
+    
+    
+            var marker_7b3cbe322c2c81a559a37a30c953893b = L.marker(
+                [-23.5, -46.63],
+                {
+}
+            ).addTo(map_acb9d1541570e1d6fa1b3210ec77ec89);
+        
+    
+        var popup_caedd21b4ae37a71217dac997afb1531 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_89064f00719ebf82ecbda87c3e7bc558 = $(`<div id="html_89064f00719ebf82ecbda87c3e7bc558" style="width: 100.0%; height: 100.0%;">São Paulo (+3 km)</div>`)[0];
+                popup_caedd21b4ae37a71217dac997afb1531.setContent(html_89064f00719ebf82ecbda87c3e7bc558);
+            
+        
+
+        marker_7b3cbe322c2c81a559a37a30c953893b.bindPopup(popup_caedd21b4ae37a71217dac997afb1531)
+        ;
+
+        
+    
+    
+            marker_7b3cbe322c2c81a559a37a30c953893b.bindTooltip(
+                `<div>
+                     São Paulo
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_b3c5f22c40d5cfdfb3281dd87984c0a7 = L.circle(
+                [-23.5, -46.63],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.15, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 3000, "stroke": true, "weight": 2}
+            ).addTo(map_acb9d1541570e1d6fa1b3210ec77ec89);
+        
+    
+        var popup_73dc7bb32aad61fa9bf4c1f2e854ce77 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_1b6b96e41857ea07a94a6f0e3d87fba0 = $(`<div id="html_1b6b96e41857ea07a94a6f0e3d87fba0" style="width: 100.0%; height: 100.0%;">Raio: 3 km</div>`)[0];
+                popup_73dc7bb32aad61fa9bf4c1f2e854ce77.setContent(html_1b6b96e41857ea07a94a6f0e3d87fba0);
+            
+        
+
+        circle_b3c5f22c40d5cfdfb3281dd87984c0a7.bindPopup(popup_73dc7bb32aad61fa9bf4c1f2e854ce77)
+        ;
+
+        
+    
+    
+            var marker_df1b2703ebbf80265c84a99e59ebae7b = L.marker(
+                [-23.45, -46.6],
+                {
+}
+            ).addTo(map_acb9d1541570e1d6fa1b3210ec77ec89);
+        
+    
+        var popup_9875513b4cd6af0d10fc66f73132acc5 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_761d9ed39ef25ff3fc24069483330f0b = $(`<div id="html_761d9ed39ef25ff3fc24069483330f0b" style="width: 100.0%; height: 100.0%;">São Paulo (+3 km)</div>`)[0];
+                popup_9875513b4cd6af0d10fc66f73132acc5.setContent(html_761d9ed39ef25ff3fc24069483330f0b);
+            
+        
+
+        marker_df1b2703ebbf80265c84a99e59ebae7b.bindPopup(popup_9875513b4cd6af0d10fc66f73132acc5)
+        ;
+
+        
+    
+    
+            marker_df1b2703ebbf80265c84a99e59ebae7b.bindTooltip(
+                `<div>
+                     São Paulo
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_49c31f429782ef61a9228c9461f8341c = L.circle(
+                [-23.45, -46.6],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.15, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 3000, "stroke": true, "weight": 2}
+            ).addTo(map_acb9d1541570e1d6fa1b3210ec77ec89);
+        
+    
+        var popup_ad84e2b90102c7bf03eb5b515af9a556 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_91f8fd4c383ad80c19e1494dbfa5db2c = $(`<div id="html_91f8fd4c383ad80c19e1494dbfa5db2c" style="width: 100.0%; height: 100.0%;">Raio: 3 km</div>`)[0];
+                popup_ad84e2b90102c7bf03eb5b515af9a556.setContent(html_91f8fd4c383ad80c19e1494dbfa5db2c);
+            
+        
+
+        circle_49c31f429782ef61a9228c9461f8341c.bindPopup(popup_ad84e2b90102c7bf03eb5b515af9a556)
+        ;
+
+        
+    
+    
+            var marker_f3c35d52d99556faf1064c0b621dd001 = L.marker(
+                [-23.56, -46.56],
+                {
+}
+            ).addTo(map_acb9d1541570e1d6fa1b3210ec77ec89);
+        
+    
+        var popup_1e990bf32e4f38232de852da72bd7823 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_d5c9cd9baa6287047d04afc3a2a33ac7 = $(`<div id="html_d5c9cd9baa6287047d04afc3a2a33ac7" style="width: 100.0%; height: 100.0%;">São Paulo (+3 km)</div>`)[0];
+                popup_1e990bf32e4f38232de852da72bd7823.setContent(html_d5c9cd9baa6287047d04afc3a2a33ac7);
+            
+        
+
+        marker_f3c35d52d99556faf1064c0b621dd001.bindPopup(popup_1e990bf32e4f38232de852da72bd7823)
+        ;
+
+        
+    
+    
+            marker_f3c35d52d99556faf1064c0b621dd001.bindTooltip(
+                `<div>
+                     São Paulo
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_764dcf67825b2c4f85a39e674d076a3d = L.circle(
+                [-23.56, -46.56],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.15, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 3000, "stroke": true, "weight": 2}
+            ).addTo(map_acb9d1541570e1d6fa1b3210ec77ec89);
+        
+    
+        var popup_dcea5d343a56fac656b449e146a8ba24 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_99ad1c70d4c6871b65d681e58838078f = $(`<div id="html_99ad1c70d4c6871b65d681e58838078f" style="width: 100.0%; height: 100.0%;">Raio: 3 km</div>`)[0];
+                popup_dcea5d343a56fac656b449e146a8ba24.setContent(html_99ad1c70d4c6871b65d681e58838078f);
+            
+        
+
+        circle_764dcf67825b2c4f85a39e674d076a3d.bindPopup(popup_dcea5d343a56fac656b449e146a8ba24)
+        ;
+
+        
+    
+    
+            var marker_027492c822933d6eaf73eb87c8a874b3 = L.marker(
+                [-23.54, -46.31],
+                {
+}
+            ).addTo(map_acb9d1541570e1d6fa1b3210ec77ec89);
+        
+    
+        var popup_673957a5cd0d4758ca6b5f8be57d1568 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_379721cde9ac9dda6c32573717de9f76 = $(`<div id="html_379721cde9ac9dda6c32573717de9f76" style="width: 100.0%; height: 100.0%;">Suzano (+5 km)</div>`)[0];
+                popup_673957a5cd0d4758ca6b5f8be57d1568.setContent(html_379721cde9ac9dda6c32573717de9f76);
+            
+        
+
+        marker_027492c822933d6eaf73eb87c8a874b3.bindPopup(popup_673957a5cd0d4758ca6b5f8be57d1568)
+        ;
+
+        
+    
+    
+            marker_027492c822933d6eaf73eb87c8a874b3.bindTooltip(
+                `<div>
+                     Suzano
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_9481f03577e0e86ddd017b450d5733db = L.circle(
+                [-23.54, -46.31],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.15, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5000, "stroke": true, "weight": 2}
+            ).addTo(map_acb9d1541570e1d6fa1b3210ec77ec89);
+        
+    
+        var popup_1b4b0e9e723e1836763f2fdf8a4e3164 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_67421e9ab1d7464770ef579fae09dfc1 = $(`<div id="html_67421e9ab1d7464770ef579fae09dfc1" style="width: 100.0%; height: 100.0%;">Raio: 5 km</div>`)[0];
+                popup_1b4b0e9e723e1836763f2fdf8a4e3164.setContent(html_67421e9ab1d7464770ef579fae09dfc1);
+            
+        
+
+        circle_9481f03577e0e86ddd017b450d5733db.bindPopup(popup_1b4b0e9e723e1836763f2fdf8a4e3164)
+        ;
+
+        
+    
+    
+            var marker_874aa8747df63f546dc6339468494834 = L.marker(
+                [-23.1177393, -46.5547861],
+                {
+}
+            ).addTo(map_acb9d1541570e1d6fa1b3210ec77ec89);
+        
+    
+        var popup_fa258037413358ca9de639c4c32a1751 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_2eb1d99e1b2f3236bd86195cb6ad4087 = $(`<div id="html_2eb1d99e1b2f3236bd86195cb6ad4087" style="width: 100.0%; height: 100.0%;">. Atibaia (+20 km)</div>`)[0];
+                popup_fa258037413358ca9de639c4c32a1751.setContent(html_2eb1d99e1b2f3236bd86195cb6ad4087);
+            
+        
+
+        marker_874aa8747df63f546dc6339468494834.bindPopup(popup_fa258037413358ca9de639c4c32a1751)
+        ;
+
+        
+    
+    
+            marker_874aa8747df63f546dc6339468494834.bindTooltip(
+                `<div>
+                     . Atibaia
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_78a31bf7c4ceb2618335a23420b713b2 = L.circle(
+                [-23.1177393, -46.5547861],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.08, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 20000, "stroke": true, "weight": 2}
+            ).addTo(map_acb9d1541570e1d6fa1b3210ec77ec89);
+        
+    
+        var popup_e970f3cb9b24ca5952484bca647d012f = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_db7f190ffcdd258f9bbb792067629884 = $(`<div id="html_db7f190ffcdd258f9bbb792067629884" style="width: 100.0%; height: 100.0%;">Raio: 20 km</div>`)[0];
+                popup_e970f3cb9b24ca5952484bca647d012f.setContent(html_db7f190ffcdd258f9bbb792067629884);
+            
+        
+
+        circle_78a31bf7c4ceb2618335a23420b713b2.bindPopup(popup_e970f3cb9b24ca5952484bca647d012f)
+        ;
+
+        
+    
+    
+            var marker_92ed2e58a8d5f413e6098267e3baebfc = L.marker(
+                [-22.9056391, -47.059564],
+                {
+}
+            ).addTo(map_acb9d1541570e1d6fa1b3210ec77ec89);
+        
+    
+        var popup_f1e346eb2ec2a0c2e188b03d3fa3f0a9 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_8f4b791a7ec2df16b504a5f8e1c8def2 = $(`<div id="html_8f4b791a7ec2df16b504a5f8e1c8def2" style="width: 100.0%; height: 100.0%;">. Campinas (+20 km)</div>`)[0];
+                popup_f1e346eb2ec2a0c2e188b03d3fa3f0a9.setContent(html_8f4b791a7ec2df16b504a5f8e1c8def2);
+            
+        
+
+        marker_92ed2e58a8d5f413e6098267e3baebfc.bindPopup(popup_f1e346eb2ec2a0c2e188b03d3fa3f0a9)
+        ;
+
+        
+    
+    
+            marker_92ed2e58a8d5f413e6098267e3baebfc.bindTooltip(
+                `<div>
+                     . Campinas
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_e802f3a8596d2a2733ba7ef9ba178e5c = L.circle(
+                [-22.9056391, -47.059564],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.08, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 20000, "stroke": true, "weight": 2}
+            ).addTo(map_acb9d1541570e1d6fa1b3210ec77ec89);
+        
+    
+        var popup_8622b9faf88890357ea68aacb20a1f6c = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_08c924bc1dd2ebb2e0e28181c5fcd265 = $(`<div id="html_08c924bc1dd2ebb2e0e28181c5fcd265" style="width: 100.0%; height: 100.0%;">Raio: 20 km</div>`)[0];
+                popup_8622b9faf88890357ea68aacb20a1f6c.setContent(html_08c924bc1dd2ebb2e0e28181c5fcd265);
+            
+        
+
+        circle_e802f3a8596d2a2733ba7ef9ba178e5c.bindPopup(popup_8622b9faf88890357ea68aacb20a1f6c)
+        ;
+
+        
+    
+    
+            var marker_6df671278bb7c41edeaf38caba5a00ff = L.marker(
+                [-23.3328038, -46.724446],
+                {
+}
+            ).addTo(map_acb9d1541570e1d6fa1b3210ec77ec89);
+        
+    
+        var popup_16f75f5d893456a1ba08682281330d47 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_3ee19b3a1df2bbd0159b3e81f6b130e5 = $(`<div id="html_3ee19b3a1df2bbd0159b3e81f6b130e5" style="width: 100.0%; height: 100.0%;">. Franco da Rocha (+20 km)</div>`)[0];
+                popup_16f75f5d893456a1ba08682281330d47.setContent(html_3ee19b3a1df2bbd0159b3e81f6b130e5);
+            
+        
+
+        marker_6df671278bb7c41edeaf38caba5a00ff.bindPopup(popup_16f75f5d893456a1ba08682281330d47)
+        ;
+
+        
+    
+    
+            marker_6df671278bb7c41edeaf38caba5a00ff.bindTooltip(
+                `<div>
+                     . Franco da Rocha
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_cc0c58d24657614e4f47be04fb1c2eb3 = L.circle(
+                [-23.3328038, -46.724446],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.08, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 20000, "stroke": true, "weight": 2}
+            ).addTo(map_acb9d1541570e1d6fa1b3210ec77ec89);
+        
+    
+        var popup_6ad2f57a74fdcf4e34813ccba6e54374 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_f8f0ef54f660243ffa492d466e8bfc9d = $(`<div id="html_f8f0ef54f660243ffa492d466e8bfc9d" style="width: 100.0%; height: 100.0%;">Raio: 20 km</div>`)[0];
+                popup_6ad2f57a74fdcf4e34813ccba6e54374.setContent(html_f8f0ef54f660243ffa492d466e8bfc9d);
+            
+        
+
+        circle_cc0c58d24657614e4f47be04fb1c2eb3.bindPopup(popup_6ad2f57a74fdcf4e34813ccba6e54374)
+        ;
+
+        
+    
+    
+            var marker_1748b44fe487a788e061677332d03dda = L.marker(
+                [-23.0908356, -47.2180677],
+                {
+}
+            ).addTo(map_acb9d1541570e1d6fa1b3210ec77ec89);
+        
+    
+        var popup_cf60530ac4be2dea9b50fe3a1e2e48e0 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_4987495c139535983d6ae21b6bf95b3f = $(`<div id="html_4987495c139535983d6ae21b6bf95b3f" style="width: 100.0%; height: 100.0%;">. Indaiatuba (+20 km)</div>`)[0];
+                popup_cf60530ac4be2dea9b50fe3a1e2e48e0.setContent(html_4987495c139535983d6ae21b6bf95b3f);
+            
+        
+
+        marker_1748b44fe487a788e061677332d03dda.bindPopup(popup_cf60530ac4be2dea9b50fe3a1e2e48e0)
+        ;
+
+        
+    
+    
+            marker_1748b44fe487a788e061677332d03dda.bindTooltip(
+                `<div>
+                     . Indaiatuba
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_cd0eedb4112937aea08faa82a8051193 = L.circle(
+                [-23.0908356, -47.2180677],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.08, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 20000, "stroke": true, "weight": 2}
+            ).addTo(map_acb9d1541570e1d6fa1b3210ec77ec89);
+        
+    
+        var popup_3ae64146b793ab2cfe54fcb188ddd7db = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_1bf8814a1a40b5fcd4dae781b28c825b = $(`<div id="html_1bf8814a1a40b5fcd4dae781b28c825b" style="width: 100.0%; height: 100.0%;">Raio: 20 km</div>`)[0];
+                popup_3ae64146b793ab2cfe54fcb188ddd7db.setContent(html_1bf8814a1a40b5fcd4dae781b28c825b);
+            
+        
+
+        circle_cd0eedb4112937aea08faa82a8051193.bindPopup(popup_3ae64146b793ab2cfe54fcb188ddd7db)
+        ;
+
+        
+    
+    
+            var marker_0b024f3264b1799fc62fca6b2bf63875 = L.marker(
+                [-23.0055542, -46.8397726],
+                {
+}
+            ).addTo(map_acb9d1541570e1d6fa1b3210ec77ec89);
+        
+    
+        var popup_f21422cc23ad9a645991f7e8f314eb09 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_fce86e208ac6835d231611e4c2dc7464 = $(`<div id="html_fce86e208ac6835d231611e4c2dc7464" style="width: 100.0%; height: 100.0%;">. Itatiba (+20 km)</div>`)[0];
+                popup_f21422cc23ad9a645991f7e8f314eb09.setContent(html_fce86e208ac6835d231611e4c2dc7464);
+            
+        
+
+        marker_0b024f3264b1799fc62fca6b2bf63875.bindPopup(popup_f21422cc23ad9a645991f7e8f314eb09)
+        ;
+
+        
+    
+    
+            marker_0b024f3264b1799fc62fca6b2bf63875.bindTooltip(
+                `<div>
+                     . Itatiba
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_262e19c27b1608671728e8e768b11280 = L.circle(
+                [-23.0055542, -46.8397726],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.08, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 20000, "stroke": true, "weight": 2}
+            ).addTo(map_acb9d1541570e1d6fa1b3210ec77ec89);
+        
+    
+        var popup_af6aa8690373b850893eaf6bf9630bda = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_e25b77f971b1d7a7b7e8a92b93f631a9 = $(`<div id="html_e25b77f971b1d7a7b7e8a92b93f631a9" style="width: 100.0%; height: 100.0%;">Raio: 20 km</div>`)[0];
+                popup_af6aa8690373b850893eaf6bf9630bda.setContent(html_e25b77f971b1d7a7b7e8a92b93f631a9);
+            
+        
+
+        circle_262e19c27b1608671728e8e768b11280.bindPopup(popup_af6aa8690373b850893eaf6bf9630bda)
+        ;
+
+        
+    
+    
+            var marker_8d69c77c7d7ff99a70ee75c807052012 = L.marker(
+                [-23.2637798, -47.2998462],
+                {
+}
+            ).addTo(map_acb9d1541570e1d6fa1b3210ec77ec89);
+        
+    
+        var popup_7d0fba3b80a821b2439325a46d1da845 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_eff40ea9f9ca87c16d1ccd9663271cde = $(`<div id="html_eff40ea9f9ca87c16d1ccd9663271cde" style="width: 100.0%; height: 100.0%;">. Itu (+20 km)</div>`)[0];
+                popup_7d0fba3b80a821b2439325a46d1da845.setContent(html_eff40ea9f9ca87c16d1ccd9663271cde);
+            
+        
+
+        marker_8d69c77c7d7ff99a70ee75c807052012.bindPopup(popup_7d0fba3b80a821b2439325a46d1da845)
+        ;
+
+        
+    
+    
+            marker_8d69c77c7d7ff99a70ee75c807052012.bindTooltip(
+                `<div>
+                     . Itu
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_876bdf8df99174b6a0a1de2392d81402 = L.circle(
+                [-23.2637798, -47.2998462],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.08, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 20000, "stroke": true, "weight": 2}
+            ).addTo(map_acb9d1541570e1d6fa1b3210ec77ec89);
+        
+    
+        var popup_c83c72d32598413832828b5344645677 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_7e4119fac840d869a4d18d5c09a7c4a0 = $(`<div id="html_7e4119fac840d869a4d18d5c09a7c4a0" style="width: 100.0%; height: 100.0%;">Raio: 20 km</div>`)[0];
+                popup_c83c72d32598413832828b5344645677.setContent(html_7e4119fac840d869a4d18d5c09a7c4a0);
+            
+        
+
+        circle_876bdf8df99174b6a0a1de2392d81402.bindPopup(popup_c83c72d32598413832828b5344645677)
+        ;
+
+        
+    
+    
+            var marker_cdb1345a869c42ad81534dc69b1a3c9c = L.marker(
+                [-23.3050682, -45.9723075],
+                {
+}
+            ).addTo(map_acb9d1541570e1d6fa1b3210ec77ec89);
+        
+    
+        var popup_bf545e09f985f2caff90838fd7401ae3 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_263884f23be55b7ef86c69bb25058fc8 = $(`<div id="html_263884f23be55b7ef86c69bb25058fc8" style="width: 100.0%; height: 100.0%;">. Jacareí (+20 km)</div>`)[0];
+                popup_bf545e09f985f2caff90838fd7401ae3.setContent(html_263884f23be55b7ef86c69bb25058fc8);
+            
+        
+
+        marker_cdb1345a869c42ad81534dc69b1a3c9c.bindPopup(popup_bf545e09f985f2caff90838fd7401ae3)
+        ;
+
+        
+    
+    
+            marker_cdb1345a869c42ad81534dc69b1a3c9c.bindTooltip(
+                `<div>
+                     . Jacareí
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_dd7ed9e751355d2233619685598a24e0 = L.circle(
+                [-23.3050682, -45.9723075],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.08, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 20000, "stroke": true, "weight": 2}
+            ).addTo(map_acb9d1541570e1d6fa1b3210ec77ec89);
+        
+    
+        var popup_de6cc84ceeca81f969b9f984d555e1af = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_c7cb0ba3aae988dda6a61e742c76324f = $(`<div id="html_c7cb0ba3aae988dda6a61e742c76324f" style="width: 100.0%; height: 100.0%;">Raio: 20 km</div>`)[0];
+                popup_de6cc84ceeca81f969b9f984d555e1af.setContent(html_c7cb0ba3aae988dda6a61e742c76324f);
+            
+        
+
+        circle_dd7ed9e751355d2233619685598a24e0.bindPopup(popup_de6cc84ceeca81f969b9f984d555e1af)
+        ;
+
+        
+    
+    
+            var marker_6d816ff31b5e9598db54d14b4902bf51 = L.marker(
+                [-23.9335988, -46.3286399],
+                {
+}
+            ).addTo(map_acb9d1541570e1d6fa1b3210ec77ec89);
+        
+    
+        var popup_25a1cbe9dea15aff6574eb1e13eed6de = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_503539d769c877bf578c7141d3450ea3 = $(`<div id="html_503539d769c877bf578c7141d3450ea3" style="width: 100.0%; height: 100.0%;">. Santos (+20 km)</div>`)[0];
+                popup_25a1cbe9dea15aff6574eb1e13eed6de.setContent(html_503539d769c877bf578c7141d3450ea3);
+            
+        
+
+        marker_6d816ff31b5e9598db54d14b4902bf51.bindPopup(popup_25a1cbe9dea15aff6574eb1e13eed6de)
+        ;
+
+        
+    
+    
+            marker_6d816ff31b5e9598db54d14b4902bf51.bindTooltip(
+                `<div>
+                     . Santos
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_ee71f2b412b8f73839b849102e3bb011 = L.circle(
+                [-23.9335988, -46.3286399],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.08, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 20000, "stroke": true, "weight": 2}
+            ).addTo(map_acb9d1541570e1d6fa1b3210ec77ec89);
+        
+    
+        var popup_387a2f0b8e2eb573e47da6162eaaf5a1 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_673a99fa159acd24a2caa406e81cbdf3 = $(`<div id="html_673a99fa159acd24a2caa406e81cbdf3" style="width: 100.0%; height: 100.0%;">Raio: 20 km</div>`)[0];
+                popup_387a2f0b8e2eb573e47da6162eaaf5a1.setContent(html_673a99fa159acd24a2caa406e81cbdf3);
+            
+        
+
+        circle_ee71f2b412b8f73839b849102e3bb011.bindPopup(popup_387a2f0b8e2eb573e47da6162eaaf5a1)
+        ;
+
+        
+    
+    
+            var marker_550e3dfe07e1dd2ac023b5995a44095c = L.marker(
+                [-23.1867782, -45.8854538],
+                {
+}
+            ).addTo(map_acb9d1541570e1d6fa1b3210ec77ec89);
+        
+    
+        var popup_608fc63480ffe92547f63af76f4fb178 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_4033c4cecf22141c1e560293fa952fda = $(`<div id="html_4033c4cecf22141c1e560293fa952fda" style="width: 100.0%; height: 100.0%;">. São José dos Campos (+20 km)</div>`)[0];
+                popup_608fc63480ffe92547f63af76f4fb178.setContent(html_4033c4cecf22141c1e560293fa952fda);
+            
+        
+
+        marker_550e3dfe07e1dd2ac023b5995a44095c.bindPopup(popup_608fc63480ffe92547f63af76f4fb178)
+        ;
+
+        
+    
+    
+            marker_550e3dfe07e1dd2ac023b5995a44095c.bindTooltip(
+                `<div>
+                     . São José dos Campos
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_b83bf3786caef865eadb3fe0301f6e05 = L.circle(
+                [-23.1867782, -45.8854538],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.08, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 20000, "stroke": true, "weight": 2}
+            ).addTo(map_acb9d1541570e1d6fa1b3210ec77ec89);
+        
+    
+        var popup_7449710ae60e8c2c9bada2054aa8d536 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_6796e1e8987429e8ae4360ffbc4993a4 = $(`<div id="html_6796e1e8987429e8ae4360ffbc4993a4" style="width: 100.0%; height: 100.0%;">Raio: 20 km</div>`)[0];
+                popup_7449710ae60e8c2c9bada2054aa8d536.setContent(html_6796e1e8987429e8ae4360ffbc4993a4);
+            
+        
+
+        circle_b83bf3786caef865eadb3fe0301f6e05.bindPopup(popup_7449710ae60e8c2c9bada2054aa8d536)
+        ;
+
+        
+    
+    
+            var marker_32d77acd386b152d63d831061b4caf74 = L.marker(
+                [-23.5003451, -47.4582864],
+                {
+}
+            ).addTo(map_acb9d1541570e1d6fa1b3210ec77ec89);
+        
+    
+        var popup_8710701980231fafbf10bf0722bf7f2d = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_ddd8f768c236cee275d95d5a772d29d6 = $(`<div id="html_ddd8f768c236cee275d95d5a772d29d6" style="width: 100.0%; height: 100.0%;">. Sorocaba (+20 km)</div>`)[0];
+                popup_8710701980231fafbf10bf0722bf7f2d.setContent(html_ddd8f768c236cee275d95d5a772d29d6);
+            
+        
+
+        marker_32d77acd386b152d63d831061b4caf74.bindPopup(popup_8710701980231fafbf10bf0722bf7f2d)
+        ;
+
+        
+    
+    
+            marker_32d77acd386b152d63d831061b4caf74.bindTooltip(
+                `<div>
+                     . Sorocaba
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_f90e0b394ed95a4aa476bd8c29a69755 = L.circle(
+                [-23.5003451, -47.4582864],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.08, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 20000, "stroke": true, "weight": 2}
+            ).addTo(map_acb9d1541570e1d6fa1b3210ec77ec89);
+        
+    
+        var popup_94d1cb5e699fb02ae75411d8f7723420 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_6448e6dfffe63aaea1dc21466f753285 = $(`<div id="html_6448e6dfffe63aaea1dc21466f753285" style="width: 100.0%; height: 100.0%;">Raio: 20 km</div>`)[0];
+                popup_94d1cb5e699fb02ae75411d8f7723420.setContent(html_6448e6dfffe63aaea1dc21466f753285);
+            
+        
+
+        circle_f90e0b394ed95a4aa476bd8c29a69755.bindPopup(popup_94d1cb5e699fb02ae75411d8f7723420)
+        ;
+
+        
+    
+    
+            var marker_47079665f59f363d51a3c2ba9669c10f = L.marker(
+                [-23.433162, -45.083415],
+                {
+}
+            ).addTo(map_acb9d1541570e1d6fa1b3210ec77ec89);
+        
+    
+        var popup_814ac8b7095dfe7c2a2c2a52b35165f6 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_5261d298673e2eb944d06b5467143f20 = $(`<div id="html_5261d298673e2eb944d06b5467143f20" style="width: 100.0%; height: 100.0%;">. Ubatuba (+20 km)</div>`)[0];
+                popup_814ac8b7095dfe7c2a2c2a52b35165f6.setContent(html_5261d298673e2eb944d06b5467143f20);
+            
+        
+
+        marker_47079665f59f363d51a3c2ba9669c10f.bindPopup(popup_814ac8b7095dfe7c2a2c2a52b35165f6)
+        ;
+
+        
+    
+    
+            marker_47079665f59f363d51a3c2ba9669c10f.bindTooltip(
+                `<div>
+                     . Ubatuba
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_dae3e46f7b35a21de7671962a0540cd1 = L.circle(
+                [-23.433162, -45.083415],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.08, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 20000, "stroke": true, "weight": 2}
+            ).addTo(map_acb9d1541570e1d6fa1b3210ec77ec89);
+        
+    
+        var popup_10aa1294167d990bb0e46a5403eb3819 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_a0e59ea23122c6c8c8c1e743707ad8ae = $(`<div id="html_a0e59ea23122c6c8c8c1e743707ad8ae" style="width: 100.0%; height: 100.0%;">Raio: 20 km</div>`)[0];
+                popup_10aa1294167d990bb0e46a5403eb3819.setContent(html_a0e59ea23122c6c8c8c1e743707ad8ae);
+            
+        
+
+        circle_dae3e46f7b35a21de7671962a0540cd1.bindPopup(popup_10aa1294167d990bb0e46a5403eb3819)
+        ;
+
+        
+    
+</script>
+</html>

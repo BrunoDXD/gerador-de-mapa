@@ -1,0 +1,8 @@
+folium>=0.19.0
+geopy>=2.4.0
+branca>=0.6.0
+jinja2>=2.9
+numpy
+requests
+xyzservices
+geographiclib<3,>=1.52
